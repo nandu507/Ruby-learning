@@ -1,7 +1,3 @@
-def deep_copy(o)
-  Marshal.load(Marshal.dump(o))
-end
-
 library = [{:book=>"Matthew",
   :chapter=>"4",
   :section=>"new_testament"},
@@ -23,8 +19,8 @@ library = [{:book=>"Matthew",
  {:book=>"Acts",
   :chapter=>"17",
   :section=>"new_testament"}]
-new_library = deep_copy(library)
-  new_library.each { |lib| lib[:rack] = 1 }
- p new_library
+new_library = library.dup
+  x = new_library.map { |lib| lib[:rack] = 1 }
+ p x
  p "***********"
  p library
